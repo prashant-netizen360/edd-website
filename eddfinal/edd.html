@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤰 Obstetric Calculator: EDD & Gestational Age</title>
+  <link rel="stylesheet" href="edd.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>🤰 Obstetric Calculator</h1>
+    <p class="subtitle">Estimated Delivery Date & Gestational Age</p>
+
+    <div class="input-group">
+      <input type="text" id="lmp" value="2082-04-17" placeholder=" ">
+      <label for="lmp">Enter LMP (YYYY-MM-DD)</label>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="today" value="2082-07-" placeholder=" ">
+      <label for="today">Enter today's date (YYYY-MM-DD, optional)</label>
+    </div>
+
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </div>
+
+  <!-- Firebase SDK (compat) for auth guard on this page -->
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
+  <script>
+    // Same Firebase config as the main site (used only for auth guard on this page)
+    const firebaseConfig = {
+      apiKey: "AIzaSyAFipOZWUqWV7LREBq3kwu6zFw1vqVv9Ng",
+      authDomain: "prashantcalc.firebaseapp.com",
+      projectId: "prashantcalc",
+      storageBucket: "prashantcalc.firebasestorage.app",
+      messagingSenderId: "137426817743",
+      appId: "1:137426817743:web:d00c8fdfa040cce3049dba",
+      measurementId: "G-EWL7HM08Y2"
+    };
+
+    // Initialize firebase app on this page (if not already initialized)
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    const auth = firebase.auth();
+
+    // Redirect to homepage if user is not signed in
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        // Not signed in - go back to main page where login is available
+        window.location.href = "../index.html";
+      }
+    });
+  </script>
+
+  <!-- Local calculator logic and small touch helper -->
+  <script src="edd.js"></script>
+  <script>
+    document.querySelectorAll('.edd-card, .ga-card').forEach(card => {
+      card.addEventListener('touchstart', () => card.classList.add('touch-active'));
+      card.addEventListener('touchend', () => card.classList.remove('touch-active'));
+      card.addEventListener('touchcancel', () => card.classList.remove('touch-active'));
+    });
+  </script>
+<footer class="footer">
+  <p>Developed by <strong>Prashant Adhikari</strong></p>
+  <p>© 2025 Prashant Adhikari</p>
+
+  <div class="social-links">
+    <a href="https://facebook.com/prashant.adhikarii" target="_blank" aria-label="Facebook" class="social-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/prsnt.adkri?igsh=bWR4OHd0N2J0NHYx&utm_source=qr" target="_blank" aria-label="Instagram" class="social-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      </svg>
+    </a>
+    <a href="mailto:yourname@gmail.com" aria-label="Email" class="social-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16v16H4z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </a>
+  </div>
+</footer>
+
+
+    
+</body>
+</html>

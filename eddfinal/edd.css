@@ -1,0 +1,338 @@
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: linear-gradient(135deg, #fff8fa, #ffeef2);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* 👈 makes content stack vertically */
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    margin: 0;
+    gap: 25px; /* adds nice spacing between main box and footer */
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 102, 153, 0.25);
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- Header --- */
+h1 {
+    font-size: 26px;
+    color: #a3004b;
+    margin-bottom: 8px;
+}
+.subtitle {
+    color: #444;
+    margin-bottom: 30px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+/* --- Floating Input Fields --- */
+.input-group {
+    position: relative;
+    width: calc(100% - 10px);
+    margin: 0 auto 25px auto;
+    box-sizing: border-box;
+}
+
+.input-group input {
+    width: 100%;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", "Roboto", "Ubuntu", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 14px 14px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    background: transparent;
+    transition: all 0.25s ease;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.input-group label {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 15px;
+    color: #777;
+    background: transparent;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.input-group input:focus {
+    border-color: #ff4b4b;
+    box-shadow: 0 0 0 4px rgba(255, 75, 75, 0.15);
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -9px;
+    left: 10px;
+    font-size: 13px;
+    color: #ff4b4b;
+    background: #fff;
+}
+
+/* --- Button --- */
+button {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b, #ff6b6b);
+    background-size: 200% 200%;
+    color: white;
+    font-family: "Inter", "Segoe UI", "Helvetica Neue", "Roboto", "Ubuntu", "Noto Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 12px 45px;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    border: none;
+    box-shadow: 0 6px 18px rgba(255, 75, 75, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #d62839, #e63946, #ff1e56);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 50, 80, 0.5);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 15px rgba(255, 75, 75, 0.35);
+}
+
+/* --- Result Cards --- */
+.edd-card, .ga-card {
+    padding: 18px 26px;
+    border-radius: 14px;
+    margin: 25px auto;
+    width: fit-content;
+    text-align: center;
+    transition: 0.25s all ease;
+}
+
+.edd-card {
+    background: linear-gradient(145deg, #ffeef2, #ffd6e0);
+    color: #a3004b;
+    border-top: 6px solid #ff6699;
+    box-shadow: 0 4px 12px rgba(255, 102, 153, 0.3);
+}
+.edd-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(255, 102, 153, 0.45);
+}
+.edd-card h4 {
+    margin: 0;
+    font-size: 22px;
+    color: #99004d;
+}
+.edd-card h7 {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.ga-card {
+    background: linear-gradient(145deg, #e6ffe6, #ccffcc);
+    color: #004d00;
+    border-top: 5px solid #00b300;
+    box-shadow: 0 4px 12px rgba(0, 150, 0, 0.25);
+}
+.ga-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 150, 0, 0.4);
+}
+.ga-card h4 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #004d00;
+}
+.ga-card h6 {
+    margin-top: 5px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* --- Error Alert --- */
+.error {
+    --accent: #ffb300;
+    background: #fff6d6;
+    border: 2px solid #ffe08a;
+    border-left: 6px solid var(--accent);
+    color: #5a4100;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 14px 18px 14px 52px;
+    border-radius: 12px;
+    display: inline-block;
+    position: relative;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(255, 187, 0, 0.15);
+    animation: fadeSlideIn 0.3s ease-out;
+    text-align: left;
+}
+.error::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background: var(--accent);
+    mask: url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/></svg>") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg fill='white' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z'/></svg>") center/contain no-repeat;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Disclaimer --- */
+.disclaimer {
+    font-size: 13.5px;
+    color: #555;
+    opacity: 0.85;
+    margin-top: 16px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 0.2px;
+    animation: fadeInUp 0.5s ease-out;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Modern Minimal Footer --- */
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #666;
+    font-size: 13.5px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    opacity: 0.85;
+    padding: 16px 0;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: transparent;
+    animation: fadeInFooter 0.8s ease-out;
+}
+
+.footer strong {
+    color: #a3004b;
+    font-weight: 600;
+}
+
+.footer p {
+    margin: 3px 0;
+}
+
+.footer:hover {
+    opacity: 1;
+    transform: none;
+}
+
+/* Subtle fade-up animation */
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* --- Footer Enhancements with Icons --- */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    color: #666;
+    font-size: 13.5px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    opacity: 0.85;
+    padding: 20px 0 30px;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: transparent;
+    animation: fadeInFooter 0.8s ease-out;
+}
+
+.footer strong {
+    color: #a3004b;
+    font-weight: 600;
+}
+
+.footer p {
+    margin: 3px 0;
+}
+
+/* Social Icons */
+.social-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.social-icon {
+    color: #a3004b;
+    opacity: 0.75;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon:hover {
+    color: #ff3366;
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* Animation for footer */
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

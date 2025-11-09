@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Prashant Adhikari</title>
+  <link rel="stylesheet" href="style.css?v=4" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <div id="userWidget"></div>
+    <div class="hero-content container">
+      <h1>Dr. Prashant Adhikari</h1>
+      <p>Medical Researcher & Developer | Clinical Tools & Calculators</p>
+      <button id="loginBtn" class="btn-google">Login with Google</button>
+      <p id="userName" style="margin-top:1rem; font-weight:600;"></p>
+    </div>
+    <div class="hero-illustration">
+      <img src="https://www.svgrepo.com/show/482879/dna-3.svg" alt="Medical Illustration" />
+    </div>
+  </header>
+
+  <!-- Tagline -->
+  <section id="taglineSection" class="container hidden">
+    <p class="tagline-text">Empowering healthcare with intelligent medical tools.</p>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="container">
+    <div class="about-card hidden">
+      <h2>About Me</h2>
+      <p class="name">Dr. Prashant Adhikari</p>
+      <ul>
+        <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences</li>
+        <li><strong>10+2</strong> – St. Xavier's College, Maitighar, Kathmandu</li>
+        <li><strong>SLC</strong> – Orchid School, Bharatpur, Chitwan</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="toolsSection" class="container" style="display:none;">
+    <h2 class="tools-heading">Medical Utilities</h2>
+    <div class="tools-grid">
+      <div class="tool-card fade-in">
+        <h3>EDD Calculator</h3>
+        <p>Calculate your Estimated Due Date.</p>
+        <a href="eddfinal/edd.html" id="eddLink" target="_blank" class="tool-btn">Open EDD Calculator</a>
+      </div>
+
+      <div class="tool-card fade-in">
+        <h3>BMI Calculator</h3>
+        <p>Check your Body Mass Index.</p>
+        <a href="#" class="tool-btn">Go to Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h3>Contact Me</h3>
+      <p>Email: <a href="mailto:drprashant@gmail.com">drprashant@gmail.com</a></p>
+      <div class="social-links">
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="mailto:drprashant@gmail.com">Gmail</a>
+      </div>
+      <p>Developed by Prashant Adhikari. © 2025 Prashant Adhikari</p>
+    </div>
+  </footer>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+  </script>
+
+</body>
+</html>
