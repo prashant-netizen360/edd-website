@@ -15,19 +15,17 @@ body {
 
 /* Header / Hero */
 header {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  /* Animated gradient background for a modern, smooth effect */
+  background: linear-gradient(135deg, #7a19e0 0%, #3a7cff 50%, #1f9fff 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 10s cubic-bezier(.2,.7,.2,1) infinite;
   color: white;
   padding: 4rem 1rem;
   position: relative;
   overflow: hidden;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  transition: all 0.4s ease;
-}
-
-header.shrunk {
-  padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, #5a0fb0, #1f5fe0);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
 }
 
 .hero-content {
@@ -43,9 +41,7 @@ header h1 {
   transition: all 0.3s ease;
 }
 
-header.shrunk h1 {
-  font-size: 2.2rem;
-}
+/* removed header.shrunk adjustments (scroll-shrink removed) */
 
 header p {
   font-size: 1.2rem;
@@ -54,8 +50,69 @@ header p {
   transition: all 0.3s ease;
 }
 
-header.shrunk p {
-  font-size: 1rem;
+/* header uses animated gradient and static sizing for smooth scrolling */
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle floating animation for the hero illustration */
+.hero-illustration {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  width: 340px;
+  opacity: 0.28;
+  transform-origin: center;
+  animation: floatScale 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes floatScale {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  35% { transform: translateY(-10px) scale(1.03) rotate(-0.6deg); }
+  70% { transform: translateY(-6px) scale(1.01) rotate(-0.3deg); }
+  100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+/* subtle header glow overlay */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(600px 200px at 10% 10%, rgba(255,255,255,0.04), transparent 10%),
+              radial-gradient(500px 220px at 90% 30%, rgba(255,255,255,0.03), transparent 12%);
+  mix-blend-mode: overlay;
+}
+
+/* accent glow at bottom of header */
+.header-glow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 60%;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(58,124,255,0.18), transparent 60%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+/* stronger subtle shadow to make header stand out */
+.header-elevated {
+  box-shadow: 0 18px 40px rgba(25, 33, 143, 0.12);
 }
 
 /* Tagline Section */

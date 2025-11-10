@@ -107,19 +107,5 @@ if (eddLink) {
   });
 }
 
-// Header shrink on scroll — add/remove .shrunk on <header>
-(() => {
-  const headerEl = document.querySelector('header');
-  if (!headerEl) return;
-  const onScroll = () => {
-    const y = window.scrollY || window.pageYOffset;
-    if (y > 60) {
-      headerEl.classList.add('shrunk');
-    } else {
-      headerEl.classList.remove('shrunk');
-    }
-  };
-  // Run on load in case page is already scrolled
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
+// Removed header shrink-on-scroll to avoid jerky scrolling.
+// Using a CSS animated gradient and subtle illustration float for a modern look.
