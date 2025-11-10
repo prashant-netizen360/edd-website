@@ -18,7 +18,8 @@ header {
   /* Animated gradient background for a modern, smooth effect */
   background: linear-gradient(135deg, #7a19e0 0%, #3a7cff 50%, #1f9fff 100%);
   background-size: 300% 300%;
-  animation: gradientShift 10s cubic-bezier(.2,.7,.2,1) infinite;
+  /* faster, more conspicuous gradient */
+  animation: gradientShift 4s ease-in-out infinite;
   color: white;
   padding: 4rem 1rem;
   position: relative;
@@ -67,6 +68,7 @@ header p {
   opacity: 0.28;
   transform-origin: center;
   animation: floatScale 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes float {
@@ -390,7 +392,15 @@ footer a {
   .tools-grid { flex-direction: column; gap: 1.5rem; }
   #loginBtn { width: 80%; padding: 1rem; }
   .tool-card { max-width: 90%; }
-  .hero-illustration { display: none; }
+  /* Show a smaller, subtle illustration on mobile without blocking content */
+  .hero-illustration {
+    display: block;
+    width: 160px;
+    right: 8px;
+    top: 8px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -398,4 +408,13 @@ footer a {
   header h1 { font-size: 1.9rem; }
   header p { font-size: 0.95rem; }
   .tool-btn { width: 100%; padding: 0.7rem 0; }
+  /* Further reduce illustration on very small screens */
+  .hero-illustration {
+    display: block;
+    width: 120px;
+    right: 6px;
+    top: 6px;
+    opacity: 0.10;
+    pointer-events: none;
+  }
 }
