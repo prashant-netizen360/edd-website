@@ -53,10 +53,14 @@
     <div class="about-card hidden">
       <h2>About Me</h2>
       <p class="name">Dr. Prashant Adhikari</p>
+      <!-- rounded-square profile image for on-page About card -->
+      <div class="about-profile-wrap">
+        <img class="about-profile" src="assets/profile.jpg" alt="Prashant Adhikari" />
+      </div>
       <ul>
-        <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences</li>
-        <li><strong>10+2</strong> – St. Xavier's College, Maitighar, Kathmandu</li>
-        <li><strong>SLC</strong> – Orchid School, Bharatpur, Chitwan</li>
+        <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences, Dhulikhel</li>
+        <li><strong>10+2</strong> – St. Xavier's College, Maitighar</li>
+        <li><strong>SLC</strong> – Orchid School, Bharatpur</li>
       </ul>
     </div>
   </section>
@@ -98,7 +102,7 @@
               <path d="M3 6.5C3 5.12 4.12 4 5.5 4h13C20.88 4 22 5.12 22 6.5v11c0 1.38-1.12 2.5-2.5 2.5h-13C4.12 20 3 18.88 3 17.5v-11z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M21 6.5l-9 7-9-7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>drprashant@gmail.com</span>
+            <span>ad.prashant@outlook.com</span>
           </a>
         </div>
       </div>
@@ -134,7 +138,14 @@
       <div class="modal-about-card">
         <h2 id="aboutTitle">About Me</h2>
         <p class="name">Dr. Prashant Adhikari</p>
-        <div class="modal-about-body">
+        <div class="about-card modal-about">
+          <!-- profile image (place your photo at assets/profile.jpg) -->
+          <div class="modal-profile-wrap">
+            <img id="modalProfile" class="modal-profile" src="assets/profile.jpg" alt="Prashant Adhikari" />
+          </div>
+
+          <h2 id="aboutTitle">About Me</h2>
+          <p class="name">Dr. Prashant Adhikari</p>
           <p>A medical researcher and developer focused on clinical tools and educational resources.</p>
           <ul>
             <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences</li>
@@ -142,10 +153,6 @@
             <li><strong>SLC</strong> – Orchid School, Bharatpur, Chitwan</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.5.0/firebase-auth-compat.js"></script>
