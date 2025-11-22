@@ -11,7 +11,7 @@ function calculate() {
   try {
     const [lmp_year, lmp_month, lmp_day] = lmp.split("-").map(Number);
     if (!lmp_year || !lmp_month || !lmp_day)
-      throw new Error("Invalid LMP format");
+      throw new Error("Invalid LMP format. Please use YYYY-MM-DD.");
 
     let fixed_day = Math.min(lmp_day, 30);
 
@@ -40,55 +40,59 @@ function calculate() {
     `;
 
     if (today !== "") {
-      const [t_year, t_month, t_day] = today.split("-").map(Number);
-      if (!t_year || !t_month || !t_day)
-        throw new Error("Invalid today's date format");
+      try {
+        const [t_year, t_month, t_day] = today.split("-").map(Number);
+        if (!t_year || !t_month || !t_day) {
+          throw new Error("Invalid today's date format. Please use YYYY-MM-DD.");
+        }
 
-      if (
-        t_year < lmp_year ||
-        (t_year === lmp_year && t_month < lmp_month) ||
-        (t_year === lmp_year &&
-          t_month === lmp_month &&
-          t_day < fixed_day)
-      ) {
-        resultDiv.innerHTML =
-          '<div class="error">Error: LMP cannot be later than today!</div>';
-        return;
+        if (
+          t_year < lmp_year ||
+          (t_year === lmp_year && t_month < lmp_month) ||
+          (t_year === lmp_year &&
+            t_month === lmp_month &&
+            t_day < fixed_day)
+        ) {
+          resultDiv.innerHTML +=
+            '<div class="error">Error: LMP cannot be later than today!</div>';
+        } else {
+            let year_diff = t_year - lmp_year;
+            let month_diff = t_month - lmp_month;
+            let day_diff = t_day - fixed_day;
+
+            if (day_diff < 0) {
+              day_diff += 30;
+              month_diff -= 1;
+            }
+            if (month_diff < 0) {
+              month_diff += 12;
+              year_diff -= 1;
+            }
+
+            const gest_months = year_diff * 12 + month_diff;
+            const gest_days = day_diff;
+
+            // GA calculation using trimester blocks (3 months = 91 days, 1 month = 30 days)
+            const three_month_blocks = Math.floor(gest_months / 3);
+            const remaining_months = gest_months % 3;
+            const days_from_three_months = three_month_blocks * 91;
+            const days_from_remaining_months = remaining_months * 30;
+            const total_days = days_from_three_months + days_from_remaining_months + gest_days;
+
+            const weeks = Math.floor(total_days / 7);
+            const remaining_days = total_days % 7;
+
+            resultDiv.innerHTML += `
+              <div class="ga-card">
+                <h7>Gestational Age</h7>
+                <h4>${weeks} weeks + ${remaining_days} days</h4>
+                <h6>or ${gest_months} months + ${gest_days} days</h6>
+              </div>
+            `;
+        }
+      } catch (err) {
+        resultDiv.innerHTML += `<div class="error">Error: ${err.message}</div>`;
       }
-
-      let year_diff = t_year - lmp_year;
-      let month_diff = t_month - lmp_month;
-      let day_diff = t_day - fixed_day;
-
-      if (day_diff < 0) {
-        day_diff += 30;
-        month_diff -= 1;
-      }
-      if (month_diff < 0) {
-        month_diff += 12;
-        year_diff -= 1;
-      }
-
-      const gest_months = year_diff * 12 + month_diff;
-      const gest_days = day_diff;
-
-      // GA calculation using trimester blocks (3 months = 91 days, 1 month = 30 days)
-      const three_month_blocks = Math.floor(gest_months / 3);
-      const remaining_months = gest_months % 3;
-      const days_from_three_months = three_month_blocks * 91;
-      const days_from_remaining_months = remaining_months * 30;
-      const total_days = days_from_three_months + days_from_remaining_months + gest_days;
-
-      const weeks = Math.floor(total_days / 7);
-      const remaining_days = total_days % 7;
-
-      resultDiv.innerHTML += `
-        <div class="ga-card">
-          <h7>Gestational Age</h7>
-          <h4>${weeks} weeks + ${remaining_days} days</h4>
-          <h6>or ${gest_months} months + ${gest_days} days</h6>
-        </div>
-      `;
     }
 
     // ✅ Polished modern disclaimer
