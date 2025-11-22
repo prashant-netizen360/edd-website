@@ -29,6 +29,74 @@ h1 {
     color: #a3004b;
     margin-bottom: 8px;
 }
+
+/* Mode Switcher */
+.mode-switcher {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  background: #f8f9fa;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover:not(.active) {
+  background: rgba(255, 102, 153, 0.1);
+  color: #ff3366;
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, #ff6699, #ff3366);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 102, 153, 0.3);
+}
+
+.mode-content {
+  display: block;
+}
+
+/* Input Row for side-by-side inputs */
+.input-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+.input-label {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555;
+  text-align: left;
+}
+
+.beta-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: #333;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
 .subtitle {
     color: #444;
     margin-bottom: 30px;

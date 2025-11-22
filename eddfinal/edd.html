@@ -12,17 +12,54 @@
     <h1>🤰 Obstetric Calculator</h1>
     <p class="subtitle">Estimated Delivery Date & Gestational Age</p>
 
-    <div class="input-group">
-      <input type="text" id="lmp" value="2082-04-17" placeholder=" ">
-      <label for="lmp">Enter LMP (YYYY-MM-DD)</label>
+    <!-- Mode Switcher -->
+    <div class="mode-switcher">
+      <button class="mode-btn active" onclick="switchMode('lmp')">From LMP</button>
+      <button class="mode-btn" onclick="switchMode('scan')">From Scan <span class="beta-tag">BETA</span></button>
     </div>
 
-    <div class="input-group">
-      <input type="text" id="today" value="2082-07-" placeholder=" ">
-      <label for="today">Enter today's date (YYYY-MM-DD, optional)</label>
+    <!-- From LMP Mode -->
+    <div id="lmpMode" class="mode-content">
+      <div class="input-group">
+        <input type="text" id="lmp" value="2082-04-17" placeholder=" ">
+        <label for="lmp">Enter LMP (YYYY-MM-DD)</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="today" value="2082-07-" placeholder=" ">
+        <label for="today">Enter today's date (YYYY-MM-DD, optional)</label>
+      </div>
+
+      <button onclick="calculate()">Calculate</button>
     </div>
 
-    <button onclick="calculate()">Calculate</button>
+    <!-- From Scan Mode -->
+    <div id="scanMode" class="mode-content" style="display: none;">
+      <div class="input-group">
+        <input type="text" id="scanDate" placeholder=" ">
+        <label for="scanDate">Scan Date (YYYY-MM-DD)</label>
+      </div>
+
+      <p class="input-label">Estimated Gestational Age by Scan:</p>
+      <div class="input-row">
+        <div class="input-group">
+          <input type="number" id="scanWeeks" min="0" max="42" placeholder=" ">
+          <label for="scanWeeks">Weeks</label>
+        </div>
+        <div class="input-group">
+          <input type="number" id="scanDays" min="0" max="6" placeholder=" ">
+          <label for="scanDays">Days</label>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="todayScan" placeholder=" ">
+        <label for="todayScan">Today's Date (YYYY-MM-DD)</label>
+      </div>
+
+      <button onclick="calculateFromScan()">Calculate</button>
+    </div>
+
     <div id="result"></div>
   </div>
 
