@@ -39,20 +39,18 @@ auth.onAuthStateChanged((user) => {
     userName.textContent = `Welcome, ${user.displayName}!`;
     loginBtn.style.display = "none";
     logoutBtn.style.display = "inline-block";
-    toolsSection.style.display = "flex";
-
-    // Animate tools cards
-    const cards = document.querySelectorAll(".tool-card");
-    cards.forEach((card, index) => {
-      setTimeout(() => card.classList.add("fade-in"), index * 200);
-    });
   } else {
     // No user signed in
     loginBtn.style.display = "inline-block";
     logoutBtn.style.display = "none";
-    toolsSection.style.display = "none";
     userName.textContent = "";
   }
+  
+  // Animate tools cards on page load
+  const cards = document.querySelectorAll(".tool-card");
+  cards.forEach((card, index) => {
+    setTimeout(() => card.classList.add("fade-in"), index * 200);
+  });
 });
 
 // Login button click
@@ -64,13 +62,6 @@ loginBtn.addEventListener("click", () => {
       userName.textContent = `Welcome, ${user.displayName}!`;
       loginBtn.style.display = "none";
       logoutBtn.style.display = "inline-block";
-      toolsSection.style.display = "flex";
-
-      // Animate tools cards
-      const cards = document.querySelectorAll(".tool-card");
-      cards.forEach((card, index) => {
-        setTimeout(() => card.classList.add("fade-in"), index * 200);
-      });
     })
     .catch((error) => {
       console.error("Login failed:", error);
@@ -84,7 +75,6 @@ logoutBtn.addEventListener("click", () => {
     .then(() => {
       loginBtn.style.display = "inline-block";
       logoutBtn.style.display = "none";
-      toolsSection.style.display = "none";
       userName.textContent = "";
     })
     .catch((error) => {
@@ -96,13 +86,21 @@ logoutBtn.addEventListener("click", () => {
 const eddLink = document.getElementById("eddLink");
 if (eddLink) {
   eddLink.addEventListener("click", (e) => {
-    // Prevent the default anchor navigation; we'll open conditionally
     e.preventDefault();
     if (auth.currentUser) {
-      // Open in new tab as intended
       window.open(eddLink.href, "_blank");
     } else {
-      alert("Please sign in with Google to access the EDD calculator.");
+      // Trigger Google login when user tries to access calculator
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          // After successful login, open the calculator
+          window.open(eddLink.href, "_blank");
+        })
+        .catch((error) => {
+          console.error("Login failed:", error);
+          alert("Please sign in with Google to access the EDD calculator.");
+        });
     }
   });
 }
