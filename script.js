@@ -146,5 +146,36 @@ if (eddLink) {
   });
 })();
 
+// Privacy Policy modal logic
+(() => {
+  const privacyModal = document.getElementById('privacyModal');
+  const privacyLink = document.getElementById('privacyLink');
+  if (!privacyModal || !privacyLink) return;
+
+  const openPrivacyModal = () => {
+    privacyModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = privacyModal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closePrivacyModal = () => {
+    privacyModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (privacyLink) privacyLink.focus();
+  };
+
+  // open on click
+  privacyLink.addEventListener('click', openPrivacyModal);
+
+  // close handlers
+  privacyModal.querySelectorAll('[data-dismiss], .modal-close').forEach(el => el.addEventListener('click', closePrivacyModal));
+  
+  // close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && privacyModal.getAttribute('aria-hidden') === 'false') closePrivacyModal();
+  });
+})();
+
 // Removed header shrink-on-scroll to avoid jerky scrolling.
 // Using a CSS animated gradient and subtle illustration float for a modern look.

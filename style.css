@@ -631,6 +631,21 @@ footer h3 {
 /* make credits slightly lighter and stacked nicely */
 .footer-bottom .credits { color: #6b7b90; margin-top: 6px; }
 
+.privacy-link {
+  background: none;
+  border: none;
+  color: #2575fc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  padding: 0;
+  font-family: inherit;
+}
+
+.privacy-link:hover {
+  color: #6a11cb;
+}
+
 /* small responsive tweaks */
 @media (max-width:700px) {
   .contact-item, .social-link { animation-duration: 420ms; }
@@ -746,6 +761,62 @@ footer h3 {
  @media (max-width:480px) {
    .modal-content { padding: 1rem; border-radius: 12px; }
  }
+
+/* Privacy Modal Styles */
+.modal-content-wide {
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.privacy-content {
+  text-align: left;
+  line-height: 1.7;
+}
+
+.privacy-content h2 {
+  color: #1f4fd8;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.privacy-content .last-updated {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.privacy-content h3 {
+  color: #2575fc;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.privacy-content p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.privacy-content ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  color: #333;
+}
+
+.privacy-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+.privacy-content a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.privacy-content a:hover {
+  text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   header h1 { font-size: 2.2rem; }
