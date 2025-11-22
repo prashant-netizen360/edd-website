@@ -37,13 +37,26 @@
       </div>
 
       <div class="info-card hidden">
-        <h3>Research</h3>
-        <p>Focused on clinical data analysis, AI-assisted diagnostics, and digital health innovation.</p>
+        <h3>Research & Projects</h3>
+        <p>Focused on clinical data analysis, AI-assisted diagnostics, and creating innovative clinical calculators and educational tools for healthcare professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="toolsSection" class="container">
+    <h2 class="tools-heading">Medical Utilities</h2>
+    <div class="tools-grid">
+      <div class="tool-card hidden">
+        <h3>EDD Calculator</h3>
+        <p>Calculate your Estimated Due Date.</p>
+        <a href="eddfinal/edd.html" id="eddLink" target="_blank" class="tool-btn">Open EDD Calculator</a>
       </div>
 
-      <div class="info-card hidden">
-        <h3>Projects</h3>
-        <p>Creator of multiple clinical calculators and educational tools for healthcare professionals.</p>
+      <div class="tool-card hidden">
+        <h3>BMI Calculator</h3>
+        <p>Check your Body Mass Index.</p>
+        <a href="#" class="tool-btn">Go to Calculator</a>
       </div>
     </div>
   </section>
@@ -52,34 +65,17 @@
   <section id="about" class="container">
     <div class="about-card hidden">
       <h2>About Me</h2>
-      <p class="name">Dr. Prashant Adhikari</p>
       <!-- rounded-square profile image for on-page About card -->
       <div class="about-profile-wrap">
         <img class="about-profile" src="assets/profile.jpg" alt="Prashant Adhikari" />
       </div>
+      <p class="name">Dr. Prashant Adhikari</p>
+      <p class="address">📍 Bharatpur, Chitwan</p>
       <ul>
         <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences, Dhulikhel</li>
         <li><strong>10+2</strong> – St. Xavier's College, Maitighar</li>
         <li><strong>SLC</strong> – Orchid School, Bharatpur</li>
       </ul>
-    </div>
-  </section>
-
-  <!-- Tools Section -->
-  <section id="toolsSection" class="container">
-    <h2 class="tools-heading">Medical Utilities</h2>
-    <div class="tools-grid">
-      <div class="tool-card fade-in">
-        <h3>EDD Calculator</h3>
-        <p>Calculate your Estimated Due Date.</p>
-        <a href="eddfinal/edd.html" id="eddLink" target="_blank" class="tool-btn">Open EDD Calculator</a>
-      </div>
-
-      <div class="tool-card fade-in">
-        <h3>BMI Calculator</h3>
-        <p>Check your Body Mass Index.</p>
-        <a href="#" class="tool-btn">Go to Calculator</a>
-      </div>
     </div>
   </section>
 
@@ -146,6 +142,7 @@
 
           <h2 id="aboutTitle">About Me</h2>
           <p class="name">Dr. Prashant Adhikari</p>
+          <p class="address">📍 Bharatpur, Chitwan</p>
           <p>A medical researcher and developer focused on clinical tools and educational resources.</p>
           <ul>
             <li><strong>MBBS</strong> – Kathmandu University School of Medical Sciences</li>
@@ -169,7 +166,11 @@
       });
     }, { threshold: 0.2 });
 
+    // Observe all hidden elements including tool cards
     document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+    
+    // Also observe tool cards specifically
+    document.querySelectorAll('.tool-card').forEach((el) => observer.observe(el));
   </script>
 
 </body>

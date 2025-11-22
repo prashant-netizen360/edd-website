@@ -45,12 +45,6 @@ auth.onAuthStateChanged((user) => {
     logoutBtn.style.display = "none";
     userName.textContent = "";
   }
-  
-  // Animate tools cards on page load
-  const cards = document.querySelectorAll(".tool-card");
-  cards.forEach((card, index) => {
-    setTimeout(() => card.classList.add("fade-in"), index * 200);
-  });
 });
 
 // Login button click
