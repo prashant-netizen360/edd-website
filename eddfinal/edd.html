@@ -104,9 +104,15 @@
   </script>
 <footer class="footer">
   <p>Developed by <strong>Prashant Adhikari</strong></p>
-  <p>© 2025 Prashant Adhikari</p>
+  <p>© 2025 Prashant Adhikari | <button id="privacyLink" class="privacy-link" style="display: inline;">Privacy Policy</button></p>
 
   <div class="social-links">
+    <a href="mailto:yourname@gmail.com" aria-label="Email" class="social-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16v16H4z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+    </a>
     <a href="https://facebook.com/prashant.adhikarii" target="_blank" aria-label="Facebook" class="social-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
@@ -119,15 +125,83 @@
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
       </svg>
     </a>
-    <a href="mailto:yourname@gmail.com" aria-label="Email" class="social-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 4h16v16H4z"></path>
-        <polyline points="22,6 12,13 2,6"></polyline>
-      </svg>
-    </a>
   </div>
 </footer>
 
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="edd-modal" aria-hidden="true">
+  <div class="edd-modal-overlay" data-dismiss="true"></div>
+  <div class="edd-modal-content" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <button class="edd-modal-close" aria-label="Close privacy policy">×</button>
+    <div class="privacy-content">
+      <h2 id="privacyTitle">Privacy Policy for prashant360.com.np</h2>
+      <p class="last-updated"><strong>Last Updated:</strong> November 2025</p>
+      <p>We respect your privacy. This policy explains what information we collect and how we use it.</p>
+      
+      <h3>1. Information We Collect</h3>
+      <p><strong>Google Login:</strong> When you sign in with Google, we receive your name and email. We do <strong>not</strong> receive your password.</p>
+      <p><strong>Tool Inputs:</strong> Any medical or date-based values you enter are <strong>never stored</strong> by us.</p>
+      
+      <h3>2. How We Use Your Information</h3>
+      <ul>
+        <li>To authenticate users</li>
+        <li>To provide and improve our tools</li>
+        <li>To maintain website security</li>
+      </ul>
+      <p>We never sell your data.</p>
+      
+      <h3>3. Security</h3>
+      <p>We use Firebase and HTTPS to protect your data, but no system is completely risk-free.</p>
+      
+      <h3>4. Third-Party Services</h3>
+      <p>Google Authentication and optional analytics services may collect technical data under their own privacy policies.</p>
+      
+      <h3>5. Cookies</h3>
+      <p>Used for login sessions and performance. Disabling cookies may affect functionality.</p>
+      
+      <h3>6. Age Requirement</h3>
+      <p>Our site is intended for users <strong>18+</strong>.</p>
+      
+      <h3>7. Your Choices</h3>
+      <p>You can manage or delete your Google account data from your Google settings. Contact us for other questions.</p>
+      
+      <h3>8. Changes</h3>
+      <p>We may update this policy and will post updates here.</p>
+      
+      <h3>9. Contact</h3>
+      <p><strong>Prashant Adhikari</strong><br>
+      Email: <a href="mailto:ad.prashant@outlook.com">ad.prashant@outlook.com</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Privacy Policy modal logic
+(function() {
+  const privacyModal = document.getElementById('privacyModal');
+  const privacyLink = document.getElementById('privacyLink');
+  if (!privacyModal || !privacyLink) return;
+
+  const openPrivacyModal = () => {
+    privacyModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = privacyModal.querySelector('.edd-modal-close');
+    if (closeBtn) closeBtn.focus();
+  };
+
+  const closePrivacyModal = () => {
+    privacyModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (privacyLink) privacyLink.focus();
+  };
+
+  privacyLink.addEventListener('click', openPrivacyModal);
+  privacyModal.querySelectorAll('[data-dismiss], .edd-modal-close').forEach(el => el.addEventListener('click', closePrivacyModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && privacyModal.getAttribute('aria-hidden') === 'false') closePrivacyModal();
+  });
+})();
+</script>
 
     
 </body>

@@ -404,3 +404,167 @@ button:active {
         transform: translateY(0);
     }
 }
+
+/* Privacy Policy Link */
+.privacy-link {
+    display: inline !important;
+    width: auto !important;
+    background: none;
+    border: none;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    padding: 0;
+    font-family: inherit;
+    font-weight: normal;
+    box-shadow: none;
+    transform: none;
+}
+
+.privacy-link:hover {
+    color: #333;
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Privacy Modal Styles */
+.edd-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+}
+
+.edd-modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.edd-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(163, 0, 75, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.edd-modal-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(163, 0, 75, 0.25);
+    z-index: 1201;
+    margin: 20px;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.edd-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.edd-modal-close:hover {
+    color: #333;
+}
+
+.privacy-content {
+    text-align: left;
+    line-height: 1.7;
+    color: #333;
+}
+
+.privacy-content h2 {
+    color: #a3004b;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.privacy-content .last-updated {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.privacy-content h3 {
+    color: #d0005e;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.privacy-content p {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.privacy-content ul {
+    margin: 0.5rem 0 1rem 1.5rem;
+    color: #333;
+}
+
+.privacy-content ul li {
+    margin-bottom: 0.5rem;
+}
+
+.privacy-content a {
+    color: #a3004b;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.privacy-content a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile responsiveness for modal */
+@media (max-width: 600px) {
+    .edd-modal-content {
+        padding: 1.5rem;
+        margin: 10px;
+        max-height: 90vh;
+    }
+    
+    .privacy-content h2 {
+        font-size: 1.3rem;
+    }
+    
+    .privacy-content h3 {
+        font-size: 1rem;
+    }
+}
