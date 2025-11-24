@@ -25,9 +25,46 @@ body {
 
 /* --- Header --- */
 h1 {
-    font-size: 26px;
-    color: #a3004b;
-    margin-bottom: 8px;
+    font-size: 38px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.emoji {
+    font-size: 42px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+.brand-name {
+    background: linear-gradient(135deg, #ff6699 0%, #ff3366 50%, #d62839 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    position: relative;
+}
+
+.brand-name::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff6699, transparent);
+    border-radius: 2px;
+    opacity: 0.4;
 }
 
 /* Mode Switcher */
