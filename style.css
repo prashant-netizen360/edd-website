@@ -2,8 +2,11 @@
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
+  padding: 0;
   background-color: #f5f7fa;
   color: #333;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
@@ -11,6 +14,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
 }
 
 /* Header / Hero */
@@ -354,14 +358,17 @@ header::after {
 }
 
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   margin-top: 0;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  justify-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .tool-card {
@@ -370,10 +377,13 @@ header::after {
   box-shadow: 0 8px 24px rgba(90, 54, 240, 0.08);
   padding: 2.5rem 2rem;
   width: 100%;
+  max-width: 380px;
+  flex: 0 1 320px;
   transition: all 0.7s ease;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(90, 54, 240, 0.08);
+  box-sizing: border-box;
 }
 
 .tool-card.fade-up {
@@ -819,17 +829,25 @@ footer h3 {
 
 /* Responsive */
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+  
   header h1 { font-size: 2.2rem; }
   header p { font-size: 1rem; }
   .tools-grid { 
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    width: 100%;
   }
   #loginBtn { width: 80%; padding: 1rem; }
   .tool-card { 
+    width: calc(100% - 2rem);
     max-width: 100%;
-    width: 100%;
+    flex: none;
   }
   /* Show a smaller, subtle illustration on mobile without blocking content */
   .hero-illustration {
@@ -843,17 +861,24 @@ footer h3 {
 }
 
 @media (max-width: 480px) {
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+  
   header { padding: 3rem 1rem; }
   header h1 { font-size: 1.9rem; }
   header p { font-size: 0.95rem; }
   .tools-grid {
-    padding: 0 0.5rem;
+    padding: 0 1.5rem;
+    width: 100%;
   }
   .tool-btn { width: 100%; padding: 0.85rem 0; }
   .tool-card { 
     padding: 2rem 1.5rem;
-    width: 100%;
+    width: calc(100% - 1rem);
     max-width: 100%;
+    flex: none;
   }
   /* Further reduce illustration on very small screens */
   .hero-illustration {
