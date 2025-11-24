@@ -30,15 +30,6 @@ function calculate() {
       new_year += 1;
     }
 
-    resultDiv.innerHTML = `
-      <div class="edd-card">
-        <h7>Estimated Date of Delivery (EDD)</h7>
-        <h4>${new_year.toString().padStart(4, "0")}-${new_month
-      .toString()
-      .padStart(2, "0")}-${new_day.toString().padStart(2, "0")}</h4>
-      </div>
-    `;
-
     if (today !== "") {
       const [t_year, t_month, t_day] = today.split("-").map(Number);
       if (!t_year || !t_month || !t_day)
@@ -82,7 +73,7 @@ function calculate() {
       const weeks = Math.floor(total_days / 7);
       const remaining_days = total_days % 7;
 
-      resultDiv.innerHTML += `
+      resultDiv.innerHTML = `
         <div class="ga-card">
           <h7>Gestational Age</h7>
           <h4>${weeks} weeks + ${remaining_days} days</h4>
@@ -90,6 +81,15 @@ function calculate() {
         </div>
       `;
     }
+
+    resultDiv.innerHTML += `
+      <div class="edd-card">
+        <h7>Estimated Date of Delivery (EDD)</h7>
+        <h4>${new_year.toString().padStart(4, "0")}-${new_month
+      .toString()
+      .padStart(2, "0")}-${new_day.toString().padStart(2, "0")}</h4>
+      </div>
+    `;
 
     // ✅ Polished modern disclaimer
     resultDiv.innerHTML += `
