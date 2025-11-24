@@ -463,14 +463,14 @@ header::after {
   display: inline-block;
   font-size: 0.65rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  background: linear-gradient(135deg, #ff0080, #ff6b35);
   color: white;
   padding: 3px 8px;
   border-radius: 6px;
   margin-left: 8px;
   vertical-align: middle;
   animation: pulse 2s ease-in-out infinite;
-  box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 0, 128, 0.4);
 }
 
 @keyframes pulse {
