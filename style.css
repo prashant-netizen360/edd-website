@@ -71,7 +71,8 @@ header p {
   width: 340px;
   opacity: 0.28;
   transform-origin: center;
-  animation: floatScale 6s ease-in-out infinite;
+  /* Faster floating animation (previously 6s) */
+  animation: floatScale 3.2s ease-in-out infinite;
   pointer-events: none;
 }
 
