@@ -99,52 +99,7 @@ if (eddLink) {
   });
 }
 
-// About modal logic (open from footer About link)
-(() => {
-  const aboutModal = document.getElementById('aboutModal');
-  if (!aboutModal) return;
-
-  // Create a footer About link if missing and place it in the first (left) footer column
-  let footerAbout = document.getElementById('footerAboutBtn');
-  if (!footerAbout) {
-    const footerLeft = document.querySelector('footer .footer-left');
-    if (footerLeft) {
-      footerAbout = document.createElement('button');
-      footerAbout.id = 'footerAboutBtn';
-      footerAbout.className = 'contact-item';
-      footerAbout.type = 'button';
-      footerAbout.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM11 11h2v6h-2v-6zm0-4h2v2h-2V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg> <span>About Me</span>';
-      // insert before the contact list so it's the first interactive item
-      const contactList = footerLeft.querySelector('.contact-list');
-      if (contactList) footerLeft.insertBefore(footerAbout, contactList);
-      else footerLeft.appendChild(footerAbout);
-    }
-  }
-
-  const openModal = () => {
-    aboutModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    // focus management
-    const closeBtn = aboutModal.querySelector('.modal-close');
-    if (closeBtn) closeBtn.focus();
-  };
-
-  const closeModal = () => {
-    aboutModal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (footerAbout) footerAbout.focus();
-  };
-
-  // open on click
-  footerAbout && footerAbout.addEventListener('click', openModal);
-
-  // close handlers
-  aboutModal.querySelectorAll('[data-dismiss], .modal-close').forEach(el => el.addEventListener('click', closeModal));
-  // close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && aboutModal.getAttribute('aria-hidden') === 'false') closeModal();
-  });
-})();
+// About modal logic removed - button no longer appears in footer
 
 // Privacy Policy modal logic
 (() => {

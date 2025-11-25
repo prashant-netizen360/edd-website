@@ -434,8 +434,8 @@ header::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   margin-right: -6px;
 }
 
@@ -670,6 +670,11 @@ footer h3 {
 
 /* make credits slightly lighter and stacked nicely */
 .footer-bottom .credits { color: #6b7b90; margin-top: 6px; }
+
+/* Hide About Me button in footer */
+#footerAboutBtn {
+  display: none !important;
+}
 
 .privacy-link {
   background: none;
