@@ -21,9 +21,9 @@ body {
 header {
   /* Animated gradient background for a modern, smooth effect */
   background: linear-gradient(135deg, #7a19e0 0%, #3a7cff 50%, #1f9fff 100%);
-  background-size: 300% 300%;
+  background-size: 400% 400%;
   /* faster, more conspicuous gradient */
-  animation: gradientShift 4s ease-in-out infinite;
+  animation: gradientShift 3s ease-in-out infinite;
   color: white;
   padding: 4rem 1rem;
   position: relative;
@@ -327,6 +327,7 @@ header::after {
   border-radius: 50%;
   transform: translateY(-8px) scale(0.985);
   transition: transform 320ms cubic-bezier(.2,.9,.2,1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
 .about-card.fade-up .about-profile { transform: translateY(0) scale(1); }
