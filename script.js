@@ -50,6 +50,7 @@ auth.onAuthStateChanged((user) => {
 // Login button click
 loginBtn.addEventListener("click", () => {
   const provider = new firebase.auth.GoogleAuthProvider();
+  // Use popup (not redirect) to avoid storage issues in privacy-focused browsers
   auth.signInWithPopup(provider)
     .then((result) => {
       const user = result.user;
@@ -59,7 +60,17 @@ loginBtn.addEventListener("click", () => {
     })
     .catch((error) => {
       console.error("Login failed:", error);
-      alert("Login failed. Check console for details.");
+      // More helpful error messages
+      if (error.code === 'auth/operation-not-allowed') {
+        alert("Google sign-in is not enabled. Please contact admin.");
+      } else if (error.code === 'auth/popup-blocked') {
+        alert("Popup was blocked. Please allow popups for this site and try again.");
+      } else if (error.code === 'auth/cancelled-popup-request' || error.code === 'auth/popup-closed-by-user') {
+        // User closed popup, silently ignore
+        console.log("Login cancelled by user");
+      } else {
+        alert(`Login failed: ${error.message}\n\nTry: 1) Allow popups 2) Clear cache 3) Try incognito mode`);
+      }
     });
 });
 
