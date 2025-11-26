@@ -9,7 +9,9 @@ function calculate() {
   const add_days = 7;
 
   try {
-    const [lmp_year, lmp_month, lmp_day] = lmp.split("-").map(Number);
+    // Normalize date format: accept yyyy-mm-dd, yyyy/mm/dd, yyyy\mm\dd, yyyy_mm_dd
+    const normalizedLmp = lmp.replace(/[\/\\_]/g, '-');
+    const [lmp_year, lmp_month, lmp_day] = normalizedLmp.split("-").map(Number);
     if (!lmp_year || !lmp_month || !lmp_day)
       throw new Error("Invalid LMP format");
 
@@ -31,7 +33,9 @@ function calculate() {
     }
 
     if (today !== "") {
-      const [t_year, t_month, t_day] = today.split("-").map(Number);
+      // Normalize date format: accept yyyy-mm-dd, yyyy/mm/dd, yyyy\mm\dd, yyyy_mm_dd
+      const normalizedToday = today.replace(/[\/\\_]/g, '-');
+      const [t_year, t_month, t_day] = normalizedToday.split("-").map(Number);
       if (!t_year || !t_month || !t_day)
         throw new Error("Invalid today's date format");
 
@@ -145,11 +149,14 @@ function calculateFromScan() {
     if (!scanDate) throw new Error("Scan date is required");
     if (!todayScan) throw new Error("Today's date is required");
     
-    const [scan_year, scan_month, scan_day] = scanDate.split("-").map(Number);
+    // Normalize date format: accept yyyy-mm-dd, yyyy/mm/dd, yyyy\mm\dd, yyyy_mm_dd
+    const normalizedScanDate = scanDate.replace(/[\/\\_]/g, '-');
+    const [scan_year, scan_month, scan_day] = normalizedScanDate.split("-").map(Number);
     if (!scan_year || !scan_month || !scan_day)
       throw new Error("Invalid scan date format");
 
-    const [t_year, t_month, t_day] = todayScan.split("-").map(Number);
+    const normalizedTodayScan = todayScan.replace(/[\/\\_]/g, '-');
+    const [t_year, t_month, t_day] = normalizedTodayScan.split("-").map(Number);
     if (!t_year || !t_month || !t_day)
       throw new Error("Invalid today's date format");
 
