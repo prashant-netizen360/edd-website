@@ -50,6 +50,10 @@ auth.onAuthStateChanged((user) => {
 // Login button click
 loginBtn.addEventListener("click", () => {
   const provider = new firebase.auth.GoogleAuthProvider();
+  
+  // Show loading spinner
+  showLoadingSpinner();
+  
   // Use popup (not redirect) to avoid storage issues in privacy-focused browsers
   auth.signInWithPopup(provider)
     .then((result) => {
@@ -57,8 +61,15 @@ loginBtn.addEventListener("click", () => {
       userName.textContent = `Welcome, ${user.displayName}!`;
       loginBtn.style.display = "none";
       logoutBtn.style.display = "inline-block";
+      
+      // Wait for auth to fully propagate, then auto-open Gestify
+      setTimeout(() => {
+        hideLoadingSpinner();
+        window.open('gestify', '_blank');
+      }, 800);
     })
     .catch((error) => {
+      hideLoadingSpinner();
       console.error("Login failed:", error);
       // More helpful error messages
       if (error.code === 'auth/operation-not-allowed') {
@@ -142,6 +153,35 @@ if (eddLink) {
     if (e.key === 'Escape' && privacyModal.getAttribute('aria-hidden') === 'false') closePrivacyModal();
   });
 })();
+
+// Loading spinner functions
+function showLoadingSpinner() {
+  let spinner = document.getElementById('auth-loading-spinner');
+  if (!spinner) {
+    spinner = document.createElement('div');
+    spinner.id = 'auth-loading-spinner';
+    spinner.innerHTML = `
+      <div style="position:fixed;z-index:9999;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.9);backdrop-filter:blur(3px);">
+        <div style="text-align:center;">
+          <div style="margin:0 auto 1.2rem;width:48px;height:48px;border:6px solid #eee;border-top:6px solid #7a19e0;border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+          <div style="font-size:1.1rem;color:#333;">Verifying login...</div>
+        </div>
+      </div>
+      <style>
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+      </style>
+    `;
+    document.body.appendChild(spinner);
+  }
+  spinner.style.display = 'block';
+}
+
+function hideLoadingSpinner() {
+  const spinner = document.getElementById('auth-loading-spinner');
+  if (spinner) {
+    spinner.style.display = 'none';
+  }
+}
 
 // Removed header shrink-on-scroll to avoid jerky scrolling.
 // Using a CSS animated gradient and subtle illustration float for a modern look.
